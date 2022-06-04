@@ -1,11 +1,18 @@
 import PropTypes from 'prop-types';
+import { FilterContainer, Input, Text } from './Filter.styled';
 
 export default function Filter({ value, changeFilter }) {
   return (
-    <div>
-      <p>Find contacts by name</p>
-      <input type="text" name="filter" value={value} onChange={changeFilter} />
-    </div>
+    <FilterContainer>
+      <Text>Пошук контакту за іменем</Text>
+      <Input
+        type="text"
+        name="filter"
+        value={value}
+        onChange={changeFilter}
+        placeholder="Ім’я Прізвище"
+      />
+    </FilterContainer>
   );
 }
 

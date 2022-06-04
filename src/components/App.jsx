@@ -3,8 +3,9 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import { Container, TitleH, TitleH2 } from './App.styled';
 
-export class App extends Component {
+export default class App extends Component {
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -25,7 +26,7 @@ export class App extends Component {
     };
 
     contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
-      ? alert(`${name} is already in contacts`)
+      ? alert(`${name} вже в контактах`)
       : this.setState(({ contacts }) => ({
           contacts: [newContact, ...contacts],
         }));
@@ -52,17 +53,17 @@ export class App extends Component {
   render() {
     const { filter } = this.state;
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <TitleH>Телефонна книга</TitleH>
         <ContactForm submitProp={this.addContact} />
 
-        <h2>Contacts</h2>
+        <TitleH2>Контакти</TitleH2>
         <Filter value={filter} changeFilter={this.changeFilter} />
         <ContactList
           contacts={this.filterList()}
           deleteContact={this.deleteContact}
         />
-      </div>
+      </Container>
     );
   }
 }

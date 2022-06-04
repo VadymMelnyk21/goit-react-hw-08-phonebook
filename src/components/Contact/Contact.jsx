@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
+import { ItemContainer, Button } from './Contact.styled';
 
 export default function Contact({ name, number, contactId, deleteContact }) {
   return (
-    <>
+    <ItemContainer>
       <div>
         <span>{name}: </span>
         <span>{number}</span>
       </div>
-      <button type="button" onClick={() => deleteContact(contactId)}>
-        Delete
-      </button>
-    </>
+      <Button type="button" onClick={() => deleteContact(contactId)}>
+        Видалити
+      </Button>
+    </ItemContainer>
   );
 }
 
