@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types';
 import Contact from 'components/Contact/Contact';
 
-export default function ContactList({ contacts }) {
+export default function ContactList({ contacts, deleteContact }) {
   return (
     <ul>
       {contacts.map(({ id, name, number }) => {
         return (
           <li key={id}>
-            <Contact name={name} number={number} />
+            <Contact
+              name={name}
+              number={number}
+              contactId={id}
+              deleteContact={deleteContact}
+            />
           </li>
         );
       })}
@@ -23,4 +28,5 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
+  deleteContact: PropTypes.func.isRequired,
 };
