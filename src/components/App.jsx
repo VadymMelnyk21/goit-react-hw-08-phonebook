@@ -14,7 +14,7 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const { contacts } = this.state;
+    // const { contacts } = this.state;
 
     const newContact = {
       name,
