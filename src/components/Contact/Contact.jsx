@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export default function Contact({ name, number }) {
   return (
     <>
-      <span>{name}</span>
+      <span>{name}: </span>
       <span>{number}</span>
     </>
   );
