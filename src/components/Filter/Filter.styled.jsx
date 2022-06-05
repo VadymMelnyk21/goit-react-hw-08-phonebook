@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 export const FilterContainer = styled.div`
-  width: 200px;
-  margin: 0 auto;
+  width: 388px;
 `;
 
 export const Input = styled.input`

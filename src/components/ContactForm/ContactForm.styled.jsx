@@ -10,7 +10,8 @@ export const InputContainer = styled.div`
   margin-bottom: 15px;
 `;
 
-export const LableText = styled.p`
+export const LableText = styled.span`
+  display: block;
   margin: 0 0 10px;
 `;
 
