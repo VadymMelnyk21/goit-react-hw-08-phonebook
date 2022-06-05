@@ -1,5 +1,12 @@
 import styled from '@emotion/styled';
 
+export const Item = styled.li`
+  margin-bottom: 7px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
 export const ItemContainer = styled.div`
   display: flex;
   justify-content: space-between;
