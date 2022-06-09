@@ -16,6 +16,17 @@ export default class App extends Component {
     filter: '',
   };
 
+  // ДЗ 3 збереження в локалсторедж початок
+  componentDidUpdate(prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(
+        'contsctsLocalStorage',
+        JSON.stringify(this.state.contacts)
+      );
+    }
+  }
+  // ДЗ 3 збереження в локалсторедж кінець
+
   addContact = ({ name, number }) => {
     const { contacts } = this.state;
 
