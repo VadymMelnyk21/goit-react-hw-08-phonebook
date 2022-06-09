@@ -25,6 +25,15 @@ export default class App extends Component {
       );
     }
   }
+
+  componentDidMount() {
+    const contactsLS = localStorage.getItem('contsctsLocalStorage');
+    const contactsParse = JSON.parse(contactsLS);
+
+    if (contactsParse) {
+      this.setState({ contacts: contactsParse });
+    }
+  }
   // ДЗ 3 збереження в локалсторедж кінець
 
   addContact = ({ name, number }) => {
