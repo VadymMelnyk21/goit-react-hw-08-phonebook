@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
-import { ItemContainer, Button, Item } from './Contact.styled';
+import { ItemContainer, Button, Item } from './ContactItem.styled';
 
-export default function Contact({ name, number, contactId, deleteContact }) {
+export default function ContactItem({
+  name,
+  number,
+  contactId,
+  deleteContact,
+}) {
   return (
     <Item>
       <ItemContainer>
@@ -17,7 +22,7 @@ export default function Contact({ name, number, contactId, deleteContact }) {
   );
 }
 
-Contact.propTypes = {
+ContactItem.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   contactId: PropTypes.string.isRequired,
