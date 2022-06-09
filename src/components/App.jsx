@@ -20,14 +20,14 @@ export default class App extends Component {
   componentDidUpdate(prevState) {
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem(
-        'contsctsLocalStorage',
+        'contactsLocalStorage',
         JSON.stringify(this.state.contacts)
       );
     }
   }
 
   componentDidMount() {
-    const contactsLS = localStorage.getItem('contsctsLocalStorage');
+    const contactsLS = localStorage.getItem('contactsLocalStorage');
     const contactsParse = JSON.parse(contactsLS);
 
     if (contactsParse) {
