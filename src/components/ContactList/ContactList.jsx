@@ -1,5 +1,5 @@
 import ContactItem from '../ContactItem/ContactItem';
-import { List } from './ContactList.styled';
+import { List, Error } from './ContactList.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts, getFilter, deleteContact } from 'redux/contactsSlice';
 
@@ -21,17 +21,23 @@ export default function ContactList() {
 
   return (
     <List>
-      {contactsList.map(({ id, name, number }) => {
-        return (
-          <ContactItem
-            key={id}
-            name={name}
-            number={number}
-            contactId={id}
-            deleteContact={handleDeleteContact}
-          />
-        );
-      })}
+      {contactsList.length > 0 ? (
+        contactsList.map(({ id, name, number }) => {
+          return (
+            <ContactItem
+              key={id}
+              name={name}
+              number={number}
+              contactId={id}
+              deleteContact={handleDeleteContact}
+            />
+          );
+        })
+      ) : (
+        <Error>
+          <strong>Упс, нічого нема</strong>
+        </Error>
+      )}
     </List>
   );
 }
