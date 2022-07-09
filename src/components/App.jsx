@@ -59,7 +59,7 @@ export default function App() {
 
       <TitleH2>Контакти</TitleH2>
       {/* <Filter /> */}
-      {/* <ContactList /> */}
+      <ContactList />
     </Container>
   );
 }
