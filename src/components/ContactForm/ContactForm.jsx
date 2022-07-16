@@ -7,38 +7,47 @@ import {
   Input,
 } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact, getContacts } from 'redux/contactsSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { addContact, getContacts } from 'redux/contactsSlice';
+import {
+  useGetContactsQuery,
+  useCreateContactMutation,
+} from 'redux/contactsApi';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
-  const contacts = useSelector(getContacts);
-  const dispatch = useDispatch();
+  const { data: contacts } = useGetContactsQuery();
+  const [createContact] = useCreateContactMutation();
 
   const changeName = e => setName(e.target.value);
-  const changeNumber = e => setNumber(e.target.value);
+  const changeNumber = e => setPhone(e.target.value);
 
-  const handlerSubmit = e => {
+  const handlerSubmit = async e => {
     e.preventDefault();
 
     const newContact = {
       name,
-      number,
+      phone,
       id: nanoid(),
     };
 
-    contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
-      ? alert(`${name} вже в контактах`)
-      : dispatch(addContact(newContact));
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      return alert(`${name} вже в контактах`);
+    }
+    await createContact(newContact);
 
     reset();
   };
 
   const reset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -63,8 +72,8 @@ export default function ContactForm() {
             <LableText>Номер</LableText>
             <Input
               type="tel"
-              name="number"
-              value={number}
+              name="phone"
+              value={phone}
               onChange={changeNumber}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
