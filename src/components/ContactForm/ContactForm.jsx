@@ -7,8 +7,6 @@ import {
   Input,
 } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addContact, getContacts } from 'redux/contactsSlice';
 import {
   useGetContactsQuery,
   useCreateContactMutation,
@@ -24,7 +22,7 @@ export default function ContactForm() {
   const changeName = e => setName(e.target.value);
   const changeNumber = e => setPhone(e.target.value);
 
-  const handlerSubmit = async e => {
+  const handlerSubmit = e => {
     e.preventDefault();
 
     const newContact = {
@@ -33,14 +31,9 @@ export default function ContactForm() {
       id: nanoid(),
     };
 
-    if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase()
-      )
-    ) {
-      return alert(`${name} вже в контактах`);
-    }
-    await createContact(newContact);
+    contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
+      ? alert(`${name} вже в контактах`)
+      : createContact(newContact);
 
     reset();
   };
