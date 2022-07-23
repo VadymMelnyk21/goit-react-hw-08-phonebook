@@ -5,10 +5,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsFetchingCurrentUser } from 'redux/authorization/authorization-selectors';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, lazy } from 'react';
 import { getCurrentUser } from 'redux/authorization/authorization-requests';
-import NotFound from 'pages/NotFound';
+
+import NotFound from 'pages/NotFound/NotFound';
 import Layout from './Layout/Layout';
+
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -23,7 +26,9 @@ export default function App() {
   ) : (
     <Suspense>
       <Routes>
-        <Route path="/" element={<Layout />}></Route>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />}></Route>
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>

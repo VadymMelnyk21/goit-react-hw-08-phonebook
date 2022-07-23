@@ -4,7 +4,7 @@ export default function AuthorizationMenu() {
   return (
     <Container>
       <Link to="/register">Зареєструватися</Link>
-      <Link to="/login">Увійти</Link>
+      <Link to="/login">Авторизуватися</Link>
     </Container>
   );
 }

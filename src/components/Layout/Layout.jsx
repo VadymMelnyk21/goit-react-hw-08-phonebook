@@ -13,7 +13,6 @@ export default function Layout() {
       <main>
         <Section>
           <Container>
-            <h1>main</h1>
             <Outlet />
           </Container>
         </Section>
