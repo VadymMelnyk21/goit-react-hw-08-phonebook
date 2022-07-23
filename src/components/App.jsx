@@ -10,6 +10,8 @@ import { getCurrentUser } from 'redux/authorization/authorization-requests';
 
 import NotFound from 'pages/NotFound/NotFound';
 import Layout from './Layout/Layout';
+import PublicRoute from './PublicRoute/PublicRoute';
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 
@@ -28,6 +30,14 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />}></Route>
+          <Route
+            path="register"
+            element={
+              <PublicRoute restricted>
+                <RegistrationPage />
+              </PublicRoute>
+            }
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />
