@@ -12,6 +12,8 @@ import Layout from './Layout/Layout';
 import PublicRoute from './PublicRoute/PublicRoute';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
+import ContactsPage from 'pages/ContactsPage/ContactsPage';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 
@@ -26,7 +28,17 @@ export default function App() {
     <Suspense fallback={<h2>Завантажуємо...</h2>}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />}></Route>
+          <Route index element={<HomePage />} />
+
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
+
           <Route
             path="register"
             element={
