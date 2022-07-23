@@ -6,12 +6,12 @@ import { Container, TitleH, TitleH2 } from './ContactsPage.styled';
 export default function ContactsPage() {
   return (
     <Container>
-      <TitleH>Телефонна книга</TitleH>
+      <TitleH>Книга контактів</TitleH>
       <ContactForm />
 
       <TitleH2>Контакти</TitleH2>
-      {/* <Filter /> */}
-      {/* <ContactList /> */}
+      <Filter />
+      <ContactList />
     </Container>
   );
 }

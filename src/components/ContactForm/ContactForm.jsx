@@ -1,46 +1,43 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContactThunk } from 'redux/contacts/contacts-requests';
+import { getContacts } from 'redux/contacts/contacts-selectors';
 import {
+  Button,
   FormContainer,
+  Input,
   InputContainer,
   LableText,
-  Button,
-  Input,
 } from './ContactForm.styled';
-import { nanoid } from 'nanoid';
-import {
-  useGetContactsQuery,
-  useCreateContactMutation,
-} from 'redux/contactsApi';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
-  const { data: contacts } = useGetContactsQuery();
-  const [createContact] = useCreateContactMutation();
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const changeName = e => setName(e.target.value);
-  const changeNumber = e => setPhone(e.target.value);
+  const changeNumber = e => setNumber(e.target.value);
 
   const handlerSubmit = e => {
     e.preventDefault();
 
     const newContact = {
       name,
-      phone,
-      id: nanoid(),
+      number,
     };
 
     contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
       ? alert(`${name} вже в контактах`)
-      : createContact(newContact);
+      : dispatch(addContactThunk(newContact));
 
     reset();
   };
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -65,8 +62,8 @@ export default function ContactForm() {
             <LableText>Номер</LableText>
             <Input
               type="tel"
-              name="phone"
-              value={phone}
+              name="number"
+              value={number}
               onChange={changeNumber}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

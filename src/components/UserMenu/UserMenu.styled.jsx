@@ -6,12 +6,12 @@ export const Container = styled.div`
   color: #fff;
 `;
 
-export const UserInfo = styled.span``;
+export const UserInfoTitle = styled.span``;
 
 export const Button = styled.button`
   display: inline-block;
   background-color: transparent;
-  color: #fff;
+  color: #42362b;
 
   font-weight: 500;
   font-size: 16px;
@@ -22,6 +22,6 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    color: #42362b;
+    color: #fff;
   }
 `;

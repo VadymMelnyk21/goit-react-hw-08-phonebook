@@ -5,7 +5,7 @@ import {
 } from 'redux/authorization/authorization-selectors';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from 'redux/authorization/authorization-requests';
-import { Container, UserInfo, Button } from './UserMenu.styled';
+import { Container, UserInfoTitle, Button } from './UserMenu.styled';
 
 export default function UserMenu() {
   const userName = useSelector(getUserName);
@@ -16,9 +16,9 @@ export default function UserMenu() {
   return (
     <>
       <Container>
-        <UserInfo>
-          Привіт {userName} | Ваша пошта {userEmail} |
-        </UserInfo>
+        <UserInfoTitle>
+          Привіт {userName} | Ваша пошта: {userEmail} |
+        </UserInfoTitle>
         <Button
           type="button"
           onClick={() => {
