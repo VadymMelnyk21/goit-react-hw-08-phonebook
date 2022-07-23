@@ -9,11 +9,8 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-  display: flex;
-  align-items: center;
-
-  min-height: 39px;
-  padding: 10px 70px;
+  min-height: 25px;
+  padding: 15px 70px;
   color: #fff;
   background-color: #5db09d;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
