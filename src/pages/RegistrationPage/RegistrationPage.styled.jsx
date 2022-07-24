@@ -22,6 +22,11 @@ export const LableText = styled.span`
   color: #5db09d;
 `;
 
+export const LableInfo = styled.span`
+  font-size: 12px;
+  color: #555;
+`;
+
 export const Input = styled.input`
   width: 286px;
   padding: 5px;

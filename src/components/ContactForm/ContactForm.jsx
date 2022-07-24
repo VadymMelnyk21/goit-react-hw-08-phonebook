@@ -30,7 +30,7 @@ export default function ContactForm() {
     };
 
     contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
-      ? Notify.warning(`${name} вже в контактах`)
+      ? Notify.warning(`${name} вже є у ваших контактах`)
       : dispatch(addContactThunk(newContact));
 
     reset();

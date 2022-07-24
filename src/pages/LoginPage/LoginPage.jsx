@@ -6,6 +6,7 @@ import {
   Form,
   Label,
   LableText,
+  LableInfo,
   Input,
   FormButton,
 } from '../RegistrationPage/RegistrationPage.styled';
@@ -27,11 +28,9 @@ export default function LoginPage() {
   };
 
   const handleSubmit = e => {
-    e.perventDefaut();
+    e.preventDefault();
 
     dispatch(logIn({ email, password }));
-    setEmail('');
-    setPassword('');
   };
 
   return (
@@ -50,7 +49,12 @@ export default function LoginPage() {
         </Label>
 
         <Label>
-          <LableText>Введіть пароль</LableText>
+          <LableText>
+            Введіть пароль
+            <LableInfo>
+              (мінімум 7 символів, ви ввели {password.length})
+            </LableInfo>
+          </LableText>
           <Input
             onChange={handleChange}
             type="password"
@@ -58,6 +62,8 @@ export default function LoginPage() {
             value={password}
             autoComplete="off"
             required
+            pattern="(?=.*\d).{7,}"
+            title="Пароль має містити мінімум 7 символів, цифри або малі букви латинського алфавіту"
           />
         </Label>
 

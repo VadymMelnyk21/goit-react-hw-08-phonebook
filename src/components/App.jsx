@@ -1,21 +1,20 @@
-// import ContactForm from './ContactForm/ContactForm';
-// import ContactList from './ContactList/ContactList';
-// import Filter from './Filter/Filter';
-// import { Container, TitleH, TitleH2 } from './App.styled';
-import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Suspense, useEffect, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { getCurrentUser } from 'redux/authorization/authorization-requests';
 
 import NotFound from 'pages/NotFound/NotFound';
 import Layout from './Layout/Layout';
-import PublicRoute from './PublicRoute/PublicRoute';
-import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import ContactsPage from 'pages/ContactsPage/ContactsPage';
+import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
+const RegistrationPage = lazy(() =>
+  import('pages/RegistrationPage/RegistrationPage')
+);
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<h2>Завантажуємо...</h2>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -60,14 +59,5 @@ export default function App() {
         </Route>
       </Routes>
     </Suspense>
-
-    // <Container>
-    //   <TitleH>Телефонна книга</TitleH>
-    //   <ContactForm />
-
-    //   <TitleH2>Контакти</TitleH2>
-    //   <Filter />
-    //   <ContactList />
-    // </Container>
   );
 }
