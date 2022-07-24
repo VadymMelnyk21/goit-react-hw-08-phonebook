@@ -9,6 +9,7 @@ import {
   InputContainer,
   LableText,
 } from './ContactForm.styled';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -29,7 +30,7 @@ export default function ContactForm() {
     };
 
     contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
-      ? alert(`${name} вже в контактах`)
+      ? Notify.warning(`${name} вже в контактах`)
       : dispatch(addContactThunk(newContact));
 
     reset();

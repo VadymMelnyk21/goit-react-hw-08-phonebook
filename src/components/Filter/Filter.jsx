@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { changeFilter } from 'redux/contactsSlice';
+import { filterContact } from 'redux/contacts/contacts-slice';
 import { FilterContainer, Input, Text } from './Filter.styled';
 
 export default function Filter() {
   const dispatch = useDispatch();
 
-  const handleChangeFilter = e => dispatch(changeFilter(e.target.value));
+  const handleChangeFilter = e => dispatch(filterContact(e.target.value));
 
   return (
     <FilterContainer>

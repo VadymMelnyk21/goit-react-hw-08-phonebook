@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 const token = {
     set(token) {
-        axios.defaults.headers.common.Authorization = `Vadym ${token}`
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     },
     unset() {
         axios.defaults.headers.common.Authorization = '';
@@ -20,6 +20,7 @@ export const register = createAsyncThunk(
             token.set(data.token);
             return data;
         } catch (error) {
+            console.log(error);
             return thunkAPI.rejectWithValue(error);
         }
     }
@@ -33,6 +34,7 @@ export const logIn = createAsyncThunk(
             token.set(data.token);
             return data;
         } catch (error) {
+            console.log(error);
             return thunkAPI.rejectWithValue(error);
         }
     }
@@ -45,6 +47,7 @@ export const logOut = createAsyncThunk(
             await axios.post('users/logOut');
             token.unset();
         } catch (error) {
+            console.log(error);
             return thunkAPI.rejectWithValue(error);
         }
     }
@@ -54,17 +57,19 @@ export const getCurrentUser = createAsyncThunk(
     'authorization/refresh',
     async (_, thunkAPI) => {
         const state = thunkAPI.getState();
+        console.log(state);
         const persistedToken = state.auth.token;
-
+        // console.log(persistedToken);
         if (persistedToken === null) {
             return thunkAPI.rejectWithValue();
         }
 
         token.set(persistedToken);
         try {
-            const { data } = await axios.get('user/current');
+            const { data } = await axios.get('users/current');
             return data;
         } catch (error) {
+            console.log(error);
             return thunkAPI.rejectWithValue(error);
         }
     }

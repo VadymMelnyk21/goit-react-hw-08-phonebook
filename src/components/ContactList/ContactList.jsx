@@ -11,7 +11,7 @@ export default function ContactList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getContactsThunk);
+    dispatch(getContactsThunk());
   }, [dispatch]);
 
   const filterList = () => {

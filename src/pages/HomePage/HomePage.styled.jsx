@@ -8,6 +8,7 @@ export const Container = styled.div`
   background-color: #fff;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
   text-align: center;
+  border-bottom: 25px solid #5db09d;
 `;
 
 export const Title = styled.h2`
