@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 30px;
+  font-size: 32px;
   color: #42362b;
 `;
 

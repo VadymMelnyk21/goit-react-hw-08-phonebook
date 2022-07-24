@@ -5,6 +5,7 @@ import { ItemContainer, Button, Item } from './ContactItem.styled';
 
 export default function ContactItem({ name, number, contactId }) {
   const dispatch = useDispatch();
+  const infoDelete = { contactId, name };
 
   return (
     <Item>
@@ -15,7 +16,7 @@ export default function ContactItem({ name, number, contactId }) {
         </div>
         <Button
           type="button"
-          onClick={() => dispatch(deleteContactThunk(contactId))}
+          onClick={() => dispatch(deleteContactThunk(infoDelete))}
         >
           Видалити
         </Button>

@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <>
       <Container>
-        <Title>Вітаємо це книга контактів</Title>
+        <Title>Вітаємо у книзі контактів</Title>
         {isLoggedId && <Text>Усі функції до ваших послуг</Text>}
         {!isLoggedId && (
           <>
