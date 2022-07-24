@@ -22,6 +22,7 @@ export const register = createAsyncThunk(
             Notify.success(`Реєстрація успішна`)
             return data;
         } catch (error) {
+            Notify.failure(`Некоректно введені дані`)
             console.log(error);
             return thunkAPI.rejectWithValue(error);
         }

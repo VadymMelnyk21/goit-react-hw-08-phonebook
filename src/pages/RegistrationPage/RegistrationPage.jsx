@@ -34,9 +34,6 @@ export default function RegistrationPage() {
     e.preventDefault();
 
     dispatch(register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
   };
 
   return (
