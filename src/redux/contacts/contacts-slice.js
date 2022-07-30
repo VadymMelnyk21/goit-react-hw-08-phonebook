@@ -37,7 +37,7 @@ const contactsSlice = createSlice({
             state.error = action.payload;
         },
 
-        [addContactThunk.fulfilled]: (state, action) => {
+        [addContactThunk.fulfilled]: state => {
             state.isLoading = false;
             state.error = null;
         },
